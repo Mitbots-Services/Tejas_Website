@@ -1,0 +1,150 @@
+/* EliteX Beauty Salon - Global Luxury Styles */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;600;700&display=swap');
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(135deg, #FAF3EE 0%, #BDCDE6 50%, #B2BABC 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Particles Background */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.particle { pointer-events: none; }
+
+@keyframes float {
+  0% { transform: translateY(100vh) translateX(0); }
+  100% { transform: translateY(-100px) translateX(calc(var(--random-x, 0) * 20px)); }
+}
+
+/* Glass Morphism */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #BDCDE6 0%, #B2BABC 50%, #2C2B30 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Border Animation */
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: #BDCDE6;
+    box-shadow: 0 0 10px rgba(189, 205, 230, 0.5);
+  }
+  50% {
+    border-color: #B2BABC;
+    box-shadow: 0 0 20px rgba(178, 186, 188, 0.8);
+  }
+}
+
+.border-glow { animation: borderGlow 2s ease-in-out infinite; }
+
+/* Scroll Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-out;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #BDCDE6, #B2BABC);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #B2BABC, #2C2B30);
+}
+
+/* Floating Animation */
+@keyframes floating {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+.floating { animation: floating 3s ease-in-out infinite; }
+
+/* Section Padding */
+.section-padding { padding: 5rem 1.5rem; }
+@media (min-width: 768px) { .section-padding { padding: 5rem 3rem; } }
+@media (min-width: 1024px) { .section-padding { padding: 5rem 6rem; } }
+
+/* Heading Styles */
+h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+
+/* Input Focus Glow */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(189, 205, 230, 0.3);
+  border-color: #BDCDE6;
+}
+
+/* Luxury Divider */
+.divider-luxury {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #BDCDE6, transparent);
+  margin: 2rem 0;
+}
+
+/* Image Overlay */
+.image-overlay {
+  position: relative;
+  overflow: hidden;
+}
+.image-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(189, 205, 230, 0.3), rgba(178, 186, 188, 0.3));
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1;
+}
+.image-overlay:hover::before { opacity: 1; }
+
+/* Z-Index Layers */
+.z-particles { z-index: 0; }
+.z-content { z-index: 10; }
+.z-header { z-index: 100; }
+.z-modal { z-index: 1000; }

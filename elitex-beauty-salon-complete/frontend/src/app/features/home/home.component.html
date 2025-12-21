@@ -1,0 +1,96 @@
+<app-navigation></app-navigation>
+
+<main class="min-h-screen bg-gradient-to-b from-cream-50 to-white">
+  <!-- Hero Section -->
+  <section class="hero relative h-96 bg-cover bg-center" 
+           style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200');">
+    <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+      <div class="content text-center text-white">
+        <h1>Elite X Salon</h1>
+        <p>Your Ultimate Destination for Beauty & Wellness</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Services -->
+  <section class="py-16 px-6 max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">
+      Our Services
+    </h2>
+    <div class="grid md:grid-cols-3 gap-10">
+      <div *ngFor="let service of featuredServices" 
+           class="service-card relative bg-gradient-to-br from-purple-100 to-pink-100 rounded-3xl p-8 text-center shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-2">
+        
+        <div class="icon mx-auto w-20 h-20 flex items-center justify-center rounded-full bg-white shadow-md mb-6 text-4xl text-purple-600">
+          {{ service.icon }}
+        </div>
+        
+        <h3 class="title">{{ service.name }}</h3>
+        <p class="description">{{ service.description }}</p>
+        
+        <div class="absolute -top-5 -right-5 w-12 h-12 bg-purple-200 rounded-full opacity-50"></div>
+        <div class="absolute -bottom-5 -left-5 w-16 h-16 bg-pink-200 rounded-full opacity-50"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section py-16 px-6">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 text-center">
+      <div *ngFor="let stat of stats" class="stat-item">
+        <div class="icon text-4xl mb-2">{{ stat.icon }}</div>
+        <div class="value text-3xl font-bold">{{ stat.value }}</div>
+        <div class="label text-gray-400">{{ stat.label }}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stylists Section -->
+  <section class="py-16 px-6 max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-12">Meet Our Expert Stylists</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div *ngFor="let stylist of stylists" class="stylist-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
+        <img [src]="stylist.image" alt="{{ stylist.name }}" class="image w-full h-64 object-cover">
+        <div class="content p-6">
+          <h3 class="name">{{ stylist.name }}</h3>
+          <p class="specialization">{{ stylist.specialization }}</p>
+          <p class="bio">{{ stylist.bio }}</p>
+          <div class="meta flex justify-between text-sm">
+            <span class="rating">⭐ {{ stylist.rating }} ({{ stylist.totalReviews }} reviews)</span>
+            <span class="experience">{{ stylist.experience }}+ years exp.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="bg-gray-100 py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-12">What Our Clients Say</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div *ngFor="let testimonial of testimonials" class="testimonial-card bg-white rounded-lg shadow-lg p-6">
+          <div class="customer-header flex items-center mb-4">
+            <img [src]="testimonial.image" alt="{{ testimonial.customerName }}" class="rounded-full mr-4 object-cover">
+            <div class="customer-info">
+              <h4 class="name font-bold">{{ testimonial.customerName }}</h4>
+              <div class="rating text-yellow-400">{{ '⭐'.repeat(testimonial.rating) }}</div>
+            </div>
+          </div>
+          <p class="review-text">{{ testimonial.review }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section py-16 px-6 text-center">
+    <h2>Ready to Transform?</h2>
+    <p>Book your appointment today and experience luxury beauty services</p>
+    <button (click)="router.navigate(['/booking'])">
+      Book Now
+    </button>
+  </section>
+</main>
+
+<app-footer></app-footer>

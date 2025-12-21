@@ -1,0 +1,363 @@
+/* Home Component Styles */
+
+:host {
+  display: block;
+}
+
+section {
+  scroll-behavior: smooth;
+}
+
+/* Reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Service cards */
+.service-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border-color: #d4a574;
+  }
+
+  .icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1f2121;
+  }
+
+  .description {
+    color: #666;
+    font-size: 0.95rem;
+  }
+}
+
+/* Testimonial cards */
+.testimonial-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .customer-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 12px;
+
+    img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .customer-info {
+      .name {
+        font-weight: 600;
+        color: #1f2121;
+        margin-bottom: 4px;
+      }
+
+      .rating {
+        color: #ffc107;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .review-text {
+    color: #555;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+}
+
+/* Stylist cards */
+.stylist-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .image {
+    width: 100%;
+    height: 256px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover .image {
+    transform: scale(1.05);
+  }
+
+  .content {
+    padding: 24px;
+
+    .name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1f2121;
+    }
+
+    .specialization {
+      color: #d4a574;
+      font-weight: 600;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+
+    .bio {
+      color: #666;
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: #888;
+
+      .rating {
+        font-weight: 600;
+        color: #1f2121;
+      }
+
+      .experience {
+        color: #d4a574;
+      }
+    }
+  }
+}
+
+/* Hero section */
+.hero {
+  position: relative;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white;
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    p {
+      font-size: 1.25rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+/* Stats section */
+.stats-section {
+  background: linear-gradient(135deg, #1f2121 0%, #262828 100%);
+
+  .stat-item {
+    text-align: center;
+    padding: 20px;
+
+    .icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+    }
+
+    .value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .label {
+      color: #aaa;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, #d4a574 0%, #c9935a 100%);
+  padding: 60px 24px;
+  text-align: center;
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2121;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: #1f2121;
+    margin-bottom: 32px;
+    opacity: 0.95;
+  }
+
+  button {
+    padding: 14px 32px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #1f2121;
+    color: white;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero .content h1 {
+    font-size: 2.5rem;
+  }
+
+  .cta-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .service-card,
+  .stylist-card,
+  .testimonial-card {
+    margin-bottom: 16px;
+  }
+
+  section {
+    padding: 24px 16px;
+  }
+}
+
+/* Grid utilities */
+.grid {
+  display: grid;
+}
+
+.gap-8 {
+  gap: 32px;
+}
+
+.py-16 {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.px-6 {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.max-w-6xl {
+  max-width: 1152px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.mb-12 {
+  margin-bottom: 48px;
+}
+
+.md\:grid-cols-3 {
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.md\:grid-cols-4 {
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.md\:grid-cols-2 {
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+git config --global user.name "Karthick-prime"
+git config --global user.email "karthickgopi2002@gmail.com"

@@ -1,0 +1,49 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-elitex_salon}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-password}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-password}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database/seed.sql:/docker-entrypoint-initdb.d/01-seed.sql
+    ports:
+      - "3306:3306"
+
+  eureka-server:
+    build: ./eureka-server
+    restart: unless-stopped
+    ports:
+      - "8761:8761"
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/${MYSQL_DATABASE:-elitex_salon}
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_ROOT_PASSWORD:-password}
+      jwt.secret: ${JWT_SECRET:-change-me}
+      stripe.api.key: ${STRIPE_API_KEY:-sk_test_please_replace}
+      SPRING_MAIL_USERNAME: ${SPRING_MAIL_USERNAME:-youremail@gmail.com}
+      SPRING_MAIL_PASSWORD: ${SPRING_MAIL_PASSWORD:-emailpassword}
+      EUREKA_SERVER: http://eureka-server:8761/eureka/
+    depends_on:
+      - db
+      - eureka-server
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+
+volumes:
+  db_data:

@@ -1,0 +1,11 @@
+{
+  "buildCommand": "npm run build -- --configuration production",
+  "outputDirectory": "dist/frontend",
+  "framework": "angular",
+  "env": {
+    "API_URL": {
+      "description": "Backend API URL (e.g., https://elitex-api.railway.app)",
+      "required": true
+    }
+  }
+}

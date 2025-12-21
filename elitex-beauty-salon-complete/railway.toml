@@ -1,0 +1,42 @@
+services:
+  - type: web
+    name: elitex-backend
+    repo: your-github-repo-url
+    buildCommand: mvn clean package -DskipTests
+    startCommand: java -jar target/saloon-0.0.1-SNAPSHOT.jar
+    envs:
+      - key: SPRING_DATASOURCE_URL
+        value: ${{ database.SPRING_DATASOURCE_URL }}
+      - key: SPRING_DATASOURCE_USERNAME
+        value: ${{ database.SPRING_DATASOURCE_USERNAME }}
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: ${{ database.SPRING_DATASOURCE_PASSWORD }}
+      - key: JWT_SECRET
+        value: change-me-to-secure-random-string
+        isPrivate: true
+      - key: STRIPE_API_KEY
+        value: sk_test_replace_me
+        isPrivate: true
+      - key: SPRING_MAIL_USERNAME
+        value: your-email@gmail.com
+        isPrivate: true
+      - key: SPRING_MAIL_PASSWORD
+        value: your-app-password
+        isPrivate: true
+      - key: FRONTEND_URL
+        value: https://elitex-frontend.vercel.app
+
+  - type: postgresql
+    name: elitex-db
+    plan: starter
+    envs:
+      - key: POSTGRES_DB
+        value: elitex_db
+      - key: POSTGRES_USER
+        value: elitex_user
+      - key: POSTGRES_PASSWORD
+        value: ${{ secret }}
+        isPrivate: true
+
+plugins:
+  - src: https://github.com/railwayapp/starters/tree/main/plugins/postresql

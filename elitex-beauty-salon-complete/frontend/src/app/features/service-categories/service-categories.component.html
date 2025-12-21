@@ -1,0 +1,48 @@
+<app-navigation></app-navigation>
+
+<main class="services-container">
+  <!-- Sticky Category Navigation -->
+  <nav class="category-nav" [class.sticky]="isSticky">
+    <div class="category-nav-inner">
+      <button *ngFor="let cat of categories"
+              class="category-nav-item"
+              [class.active]="activeCategory === cat.id"
+              (click)="scrollToCategory(cat.id)">
+        <span class="icon">{{ cat.icon }}</span>
+        <span class="text">{{ cat.name }}</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <section class="categories-content">
+    <!-- Category Sections -->
+    <div *ngFor="let category of categories" 
+         [id]="category.id"
+         class="category-section">
+      
+      <div class="category-header">
+        <h1 class="category-title">
+          <span class="icon">{{ category.icon }}</span>
+          {{ category.name }}
+        </h1>
+      </div>
+
+      <!-- Sub-categories -->
+      <div class="subcategories-grid">
+        <div *ngFor="let sub of category.subCategories" class="subcategory-card">
+          <h3 class="subcategory-title">{{ sub.name }}</h3>
+          
+          <ul class="services-list">
+            <li *ngFor="let service of sub.services" class="service-item">
+              <span class="service-name">{{ service.name }}</span>
+              <span class="service-price">₹{{ service.price }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<app-footer></app-footer>
