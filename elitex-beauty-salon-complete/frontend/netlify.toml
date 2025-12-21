@@ -1,5 +1,5 @@
 [build]
-publish = "dist/elitex-frontend/browser"
+publish = "dist/elitex-frontend"
 command = "npm run build"
 
 [[redirects]]
