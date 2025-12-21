@@ -1,4 +1,12 @@
 {
+  "name": "elitex-monorepo",
+  "private": true,
+  "scripts": {
+    "build:frontend": "cd frontend && npm ci --no-audit --no-fund && npm run build",
+    "build:backend": "cd backend && mvn -DskipTests package",
+    "build:all": "npm run build:frontend && npm run build:backend",
+    "netlify:deploy": "npx netlify-cli deploy --dir=frontend/dist/elitex-frontend --prod"
+  },
   "dependencies": {
     "@angular/cli": "^21.0.4",
     "@angular/common": "^21.0.6",
