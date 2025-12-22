@@ -17,6 +17,7 @@ com\elitex\saloon\config\SecurityConfig.class
 com\elitex\saloon\service\impl\AuthServiceImpl.class
 com\elitex\saloon\entity\Service.class
 com\elitex\saloon\service\impl\AppointmentServiceImpl.class
+com\elitex\saloon\controller\ContactController.class
 com\elitex\saloon\entity\GalleryImage$GalleryImageBuilder.class
 com\elitex\saloon\entity\Promotion.class
 com\elitex\saloon\dto\ApiResponse$ApiResponseBuilder.class

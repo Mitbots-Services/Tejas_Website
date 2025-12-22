@@ -13,3 +13,14 @@ bootstrapApplication(AppComponent, {
     provideAnimations()
   ]
 });
+// This simple script runs as soon as the browser loads the app
+window.onload = function() {
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+  }, 0);
+};
+
+// This helps reset the position when you hit the 'Refresh' button
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+};

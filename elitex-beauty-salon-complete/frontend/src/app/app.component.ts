@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-
-
+import { Component, OnInit, inject } from '@angular/core';
+import { CommonModule, ViewportScroller } from '@angular/common';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +12,44 @@ import { RouterOutlet } from '@angular/router';
       <router-outlet></router-outlet>
     </div>
   `,
-  styles: []
+  styles: [`
+    .app-container {
+      position: relative;
+      min-height: 100vh;
+    }
+  `]
 })
 export class AppComponent implements OnInit {
+  // Inject services needed for scrolling and navigation
+  private router = inject(Router);
+  private viewportScroller = inject(ViewportScroller);
+
+  constructor() {
+    // 1. Force the browser to stop remembering scroll positions (Fixes Back button/Refresh)
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+  }
+
   ngOnInit(): void {
     this.initParticles();
+    this.handleScrollToTop();
+  }
+
+  private handleScrollToTop(): void {
+    // 2. Listen for every navigation end (clicking links or back/forward)
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      // Force scroll to (0,0)
+      window.scrollTo(0, 0);
+      this.viewportScroller.scrollToPosition([0, 0]);
+    });
+
+    // 3. Force scroll to top on a hard Refresh (F5)
+    window.addEventListener('load', () => {
+      window.scrollTo(0, 0);
+    });
   }
 
   private initParticles(): void {

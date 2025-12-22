@@ -1,6 +1,6 @@
 <app-navigation></app-navigation>
 
-<main class="min-h-screen bg-transparent">
+<main class="min-h-screen bg-[#FDFBF7] font-sans overflow-x-hidden">
   
   <section class="h-screen relative flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0 z-0">
@@ -8,7 +8,7 @@
       <div class="absolute inset-0 bg-[#2C2B30]/60 backdrop-blur-[2px]"></div>
     </div>
     
-    <div class="relative z-10 text-center px-4 space-y-8 reveal active">
+    <div class="relative z-10 text-center px-4 space-y-8 fade-up active pt-28">
       <p class="text-[#BDCDE6] uppercase tracking-[0.8em] text-xs font-semibold opacity-90">Welcome to</p>
       <h1 class="font-girly text-8xl md:text-[12rem] text-[#FAF3EE] drop-shadow-2xl leading-none">Tejas</h1>
       <div class="h-[1px] w-32 md:w-48 bg-[#B2BABC] mx-auto opacity-70"></div>
@@ -22,132 +22,120 @@
     </div>
   </section>
 
-  <section class="py-32 px-6 max-w-[1400px] mx-auto overflow-hidden">
-    <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
-      <div class="mb-8 md:mb-0">
-        <h2 class="text-5xl md:text-6xl text-[#2C2B30] font-playfair mb-4">Signature Experiences</h2>
-        <div class="h-1 w-24 bg-[#BDCDE6]"></div>
-        <p class="text-[#B2BABC] uppercase tracking-[0.2em] text-xs mt-4">Curated Excellence for Your Beauty</p>
-      </div>
+  <section class="py-24 bg-white overflow-hidden relative">
+    <div class="max-w-[1400px] mx-auto px-6">
       
-      <div class="flex gap-4">
-        <button (click)="prevSlide()" class="nav-btn group" aria-label="Previous Slide">
-          <span class="group-hover:-translate-x-1 transition-transform inline-block">←</span>
-        </button>
-        <button (click)="nextSlide()" class="nav-btn group" aria-label="Next Slide">
-          <span class="group-hover:translate-x-1 transition-transform inline-block">→</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="relative overflow-visible cursor-grab active:cursor-grabbing carousel-container"
-         (mousedown)="startDrag($event)" (mousemove)="onDrag($event)" (mouseup)="endDrag($event)" (mouseleave)="endDrag($event)"
-         (touchstart)="startDrag($event)" (touchmove)="onDrag($event)" (touchend)="endDrag($event)">
-      
-      <div #carousel class="flex gap-8 transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] will-change-transform">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12 fade-up">
+        <div>
+          <h2 class="text-4xl md:text-5xl font-playfair text-[#2C2B30] mb-2">Signature Services</h2>
+          <div class="h-1 w-20 bg-[#d4af37]"></div>
+          <p class="text-gray-400 uppercase tracking-[0.2em] text-xs mt-3">Curated Excellence for You</p>
+        </div>
         
-        <div *ngFor="let service of featuredServices" 
-             class="min-w-[300px] md:min-w-[32%] flex-shrink-0 bg-white p-10 md:p-12 border border-[#B2BABC]/20 group relative overflow-hidden transition-all duration-500 hover:border-[#BDCDE6] hover:shadow-2xl hover:-translate-y-2">
-          
-          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#2C2B30] to-[#BDCDE6] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
-          
-          <div class="text-6xl mb-10 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 inline-block grayscale group-hover:grayscale-0 opacity-80 group-hover:opacity-100">
-            {{ service.icon }}
-          </div>
-          
-          <h3 class="text-2xl font-bold text-[#2C2B30] mb-4 font-playfair">{{ service.name }}</h3>
-          
-          <p class="text-[11px] text-[#B2BABC] uppercase tracking-widest leading-relaxed mb-10 min-h-[48px]">
-            {{ service.description }}
-          </p>
-          
-          <button (click)="navigateToCategory(service.id)" 
-                  class="text-[10px] uppercase tracking-[0.3em] font-bold text-[#2C2B30] border-b-2 border-[#B2BABC]/30 pb-2 group-hover:border-[#BDCDE6] group-hover:text-[#BDCDE6] transition-colors duration-300">
-            Discover Luxury
-          </button>
+        <div class="flex gap-4 mt-6 md:mt-0">
+          <button (click)="prevSlide()" class="w-12 h-12 border border-[#2C2B30] rounded-full hover:bg-[#2C2B30] hover:text-white transition flex items-center justify-center">←</button>
+          <button (click)="nextSlide()" class="w-12 h-12 border border-[#2C2B30] rounded-full hover:bg-[#2C2B30] hover:text-white transition flex items-center justify-center">→</button>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="py-24 bg-[#2C2B30] text-[#FAF3EE] relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-64 h-64 bg-[#BDCDE6] rounded-full blur-[100px] opacity-10"></div>
-    <div class="absolute bottom-0 left-0 w-64 h-64 bg-[#FAF3EE] rounded-full blur-[100px] opacity-5"></div>
-
-    <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 relative z-10">
-      <div *ngFor="let stat of stats" class="text-center group reveal">
-        <div class="text-4xl mb-4 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition duration-500">{{ stat.icon }}</div>
-        <div class="text-4xl md:text-5xl font-playfair font-bold text-[#BDCDE6] mb-2">{{ stat.value }}</div>
-        <div class="text-[10px] uppercase tracking-[0.3em] text-[#B2BABC]">{{ stat.label }}</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-32 bg-[#FAF3EE] relative">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-20 reveal">
-        <h2 class="text-5xl md:text-6xl font-playfair text-[#2C2B30]">The Artisans</h2>
-        <div class="h-[1px] w-24 bg-[#2C2B30] mx-auto my-6"></div>
-        <p class="text-[#B2BABC] uppercase tracking-[0.4em] text-[10px]">Masters of Transformation</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-12">
-        <div *ngFor="let stylist of stylists" class="group reveal">
-          <div class="aspect-[3/4] overflow-hidden border border-[#B2BABC]/20 relative bg-[#2C2B30]">
-            <img [src]="stylist.image" [alt]="stylist.name" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-700 group-hover:scale-105">
+      <div class="carousel-container cursor-grab active:cursor-grabbing"
+           (mousedown)="startDrag($event)" (mousemove)="onDrag($event)" (mouseup)="endDrag($event)" (mouseleave)="endDrag($event)"
+           (touchstart)="startDrag($event)" (touchmove)="onDrag($event)" (touchend)="endDrag($event)">
+        
+        <div #carousel class="flex gap-8 transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] will-change-transform">
+          
+          <div *ngFor="let service of featuredServices" 
+               (click)="navigateToCategory(service.id)"
+               class="min-w-[280px] md:min-w-[320px] bg-[#FDFBF7] p-8 border border-gray-100 group relative overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer">
             
-            <div class="absolute inset-0 bg-[#2C2B30]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-center p-6">
-              <p class="text-[#BDCDE6] italic font-playfair text-xl mb-4">"{{ stylist.bio.substring(0, 60) }}..."</p>
-              <div class="flex items-center gap-2 text-[#FAF3EE] text-xs uppercase tracking-widest">
-                <span>⭐ {{ stylist.rating }}</span>
-                <span>•</span>
-                <span>{{ stylist.experience }} Yrs Exp</span>
-              </div>
+            <div class="absolute top-0 left-0 w-full h-1 bg-[#d4af37] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+            
+            <div class="h-48 w-full mb-6 overflow-hidden rounded-md shadow-sm">
+                <img [src]="service.image" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="service">
             </div>
-          </div>
-          
-          <div class="mt-8 text-center">
-            <h3 class="text-2xl font-playfair text-[#2C2B30] tracking-wide">{{ stylist.name }}</h3>
-            <p class="text-[#B2BABC] uppercase text-[10px] tracking-[0.2em] mt-2 font-bold">{{ stylist.specialization }}</p>
+            
+            <h3 class="text-xl font-bold text-[#2C2B30] mb-3 font-playfair">{{ service.name }}</h3>
+            <p class="text-xs text-gray-500 uppercase tracking-widest leading-relaxed mb-8 min-h-[32px]">
+              {{ service.description }}
+            </p>
+            
+            <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-[#2C2B30] border-b border-[#2C2B30] pb-1 group-hover:text-[#d4af37] group-hover:border-[#d4af37] transition-colors">
+              View Details
+            </span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="py-32 bg-white relative">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-5xl font-playfair text-center mb-24 text-[#2C2B30] reveal">Client Reflections</h2>
+  <section class="py-24 bg-[#2C2B30] text-[#FAF3EE]">
+    <div class="max-w-[1200px] mx-auto px-6 text-center">
+      <h2 class="text-4xl font-playfair mb-16 fade-up">The Tejas Journey</h2>
       
-      <div class="grid md:grid-cols-2 gap-16">
-        <div *ngFor="let t of testimonials" class="reveal group hover:bg-[#FAF3EE] p-8 rounded-sm transition-colors duration-500 border-l-2 border-transparent hover:border-[#BDCDE6]">
-          <div class="flex items-start gap-6">
-            <div class="relative">
-              <img [src]="t.image" class="w-20 h-20 rounded-full object-cover grayscale group-hover:grayscale-0 transition duration-500 border-2 border-[#B2BABC]/20">
-              <div class="absolute -bottom-2 -right-2 bg-[#BDCDE6] text-[#2C2B30] text-[10px] font-bold px-2 py-1 rounded-full">5.0</div>
-            </div>
-            
-            <div class="flex-1">
-              <div class="flex text-[#BDCDE6] text-sm mb-2">★★★★★</div>
-              <p class="text-sm italic leading-loose text-[#2C2B30]/70 mb-4 font-light">"{{ t.review }}"</p>
-              <h4 class="text-sm font-bold tracking-widest uppercase text-[#2C2B30]">{{ t.customerName }}</h4>
-            </div>
+      <div class="grid md:grid-cols-3 gap-12 relative">
+        <div class="hidden md:block absolute top-8 left-0 w-full h-[1px] bg-[#d4af37]/30 z-0"></div>
+
+        <div class="relative z-10 fade-up delay-100">
+          <div class="w-16 h-16 mx-auto bg-[#2C2B30] border border-[#d4af37] rounded-full flex items-center justify-center text-xl mb-6 shadow-[0_0_20px_rgba(212,175,55,0.2)]">1</div>
+          <h3 class="text-xl font-playfair mb-3">Consultation</h3>
+          <p class="text-xs text-gray-400 leading-relaxed max-w-xs mx-auto">We begin by understanding your unique needs, skin type, and lifestyle to curate a personalized regimen.</p>
+        </div>
+
+        <div class="relative z-10 fade-up delay-200">
+          <div class="w-16 h-16 mx-auto bg-[#2C2B30] border border-[#d4af37] rounded-full flex items-center justify-center text-xl mb-6 shadow-[0_0_20px_rgba(212,175,55,0.2)]">2</div>
+          <h3 class="text-xl font-playfair mb-3">Transformation</h3>
+          <p class="text-xs text-gray-400 leading-relaxed max-w-xs mx-auto">Using premium global products and advanced techniques, our master artisans execute your service.</p>
+        </div>
+
+        <div class="relative z-10 fade-up delay-300">
+          <div class="w-16 h-16 mx-auto bg-[#2C2B30] border border-[#d4af37] rounded-full flex items-center justify-center text-xl mb-6 shadow-[0_0_20px_rgba(212,175,55,0.2)]">3</div>
+          <h3 class="text-xl font-playfair mb-3">Radiance</h3>
+          <p class="text-xs text-gray-400 leading-relaxed max-w-xs mx-auto">Step out with renewed confidence and a bespoke aftercare plan to maintain your glow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white">
+    <div class="max-w-[1200px] mx-auto px-6">
+      <div class="text-center mb-12 fade-up">
+        <h2 class="text-3xl font-playfair text-[#2C2B30]">Our Expertise</h2>
+        <p class="text-[10px] uppercase tracking-[0.2em] text-gray-400 mt-2">Specialized Departments</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div *ngFor="let cat of serviceCategories" 
+             (click)="navigateTo(cat.id)"
+             class="group relative h-72 overflow-hidden cursor-pointer fade-up rounded-sm">
+          <img [src]="cat.image" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500"></div>
+          <div class="absolute bottom-6 left-6 text-white">
+            <h3 class="font-playfair text-2xl mb-1">{{ cat.title }}</h3>
+            <p class="text-[#d4af37] text-[10px] uppercase tracking-widest">{{ cat.subtitle }}</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="py-24 bg-[#2C2B30] text-center relative overflow-hidden">
-    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1600')] bg-cover bg-center opacity-10"></div>
+  <section class="py-32 relative flex items-center justify-center overflow-hidden bg-fixed bg-cover bg-center"
+           style="background-image: url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=1600')">
     
-    <div class="relative z-10 max-w-4xl mx-auto px-6 space-y-10 reveal">
-      <h2 class="text-5xl md:text-6xl font-playfair text-[#FAF3EE]">Ready for Transformation?</h2>
-      <p class="text-[#B2BABC] uppercase tracking-[0.4em] text-xs">Secure your exclusive appointment today</p>
+    <div class="absolute inset-0 bg-[#2C2B30]/80"></div>
+
+    <div class="relative z-10 text-center max-w-2xl px-6 fade-up">
+      <p class="text-[#d4af37] uppercase tracking-[0.4em] text-xs font-bold mb-6 animate-pulse">Your Moment Awaits</p>
+      
+      <h2 class="text-5xl md:text-7xl font-playfair text-[#FAF3EE] mb-10 drop-shadow-2xl animate-float">
+        Begin Your Journey
+      </h2>
       
       <button (click)="router.navigate(['/booking'])" 
-              class="inline-block px-14 py-5 border border-[#BDCDE6] text-[#BDCDE6] uppercase tracking-[0.3em] text-[10px] font-bold hover:bg-[#BDCDE6] hover:text-[#2C2B30] transition-all duration-500 hover:shadow-[0_0_30px_rgba(189,205,230,0.3)]">
-        Book Appointment Now
+              class="relative group overflow-hidden px-12 py-5 bg-[#FAF3EE] text-[#2C2B30] uppercase tracking-[0.25em] text-xs font-extrabold shadow-[0_0_30px_rgba(250,243,238,0.2)] transition-all duration-500 hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] hover:-translate-y-1">
+        
+        <span class="relative z-10">Book Appointment</span>
+        
+        <div class="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent skew-x-[-25deg] transition-all duration-1000 group-hover:left-[100%]"></div>
       </button>
     </div>
   </section>

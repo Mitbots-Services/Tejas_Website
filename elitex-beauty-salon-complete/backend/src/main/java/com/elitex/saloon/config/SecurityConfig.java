@@ -1,7 +1,6 @@
 package com.elitex.saloon.config;
 
 import com.elitex.saloon.security.JwtAuthenticationFilter;
-import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.cors.CorsConfiguration;
@@ -17,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import java.util.Arrays; // Added for list-based configuration
 
 @Configuration
 @EnableMethodSecurity
@@ -43,6 +43,7 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        // Disable CSRF for stateless JWT-based authentication
         http.csrf(csrf -> csrf.disable())
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(authorize ->
@@ -53,6 +54,8 @@ public class SecurityConfig {
                                 .requestMatchers("/api/testimonials/**").permitAll()
                                 .requestMatchers("/api/promotions/**").permitAll()
                                 .requestMatchers("/api/appointments/book").permitAll()
+                                // Include the contact path in the permit list
+                                .requestMatchers("/api/contact/**").permitAll() 
                                 .requestMatchers("/h2-console/**").permitAll()
                                 .requestMatchers("/swagger-ui/**").permitAll()
                                 .requestMatchers("/v3/api-docs/**").permitAll()
@@ -72,11 +75,24 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOrigin(frontendUrl);
-        configuration.addAllowedHeader("*");
-        configuration.addAllowedMethod("*");
+        
+        // Explicitly set the allowed origin from your configuration
+        configuration.setAllowedOrigins(Arrays.asList(frontendUrl));
+        
+        // Define specific HTTP methods allowed
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        
+        // Allow all headers during preflight
+        configuration.setAllowedHeaders(Arrays.asList("*"));
+        
+        // Allow cookies and authorization headers to be sent
         configuration.setAllowCredentials(true);
+        
+        // Expose headers if necessary (e.g., for JWT in response headers)
+        configuration.setExposedHeaders(Arrays.asList("Authorization"));
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        // Register this configuration for all API paths
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }

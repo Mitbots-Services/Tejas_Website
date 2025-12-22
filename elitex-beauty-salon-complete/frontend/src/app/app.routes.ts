@@ -4,18 +4,18 @@ import { HomeComponent } from './features/home/home.component';
 import { ServiceCategoriesComponent } from './features/service-categories/service-categories.component';
 import { BookingComponent } from './features/booking/booking.component';
 import { GalleryComponent } from './features/gallery/gallery.component';
-import { TeamComponent } from './features/team/team.component';
+import { AboutComponent } from './features/about/about.component';
 import { ContactComponent } from './features/contact/contact.component';
-import { BlogComponent } from './features/blog/blog.component';
+
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'services', component: ServiceCategoriesComponent },
   { path: 'booking', component: BookingComponent },
   { path: 'gallery', component: GalleryComponent },
-  { path: 'team', component: TeamComponent },
+  { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'blog', component: BlogComponent },
+ 
   
   // Lazy load modules (admin/auth/dashboard) if they have their own routing files
   { 

@@ -1,19 +1,26 @@
+/* --- VARIABLES (Based on your snippet) --- */
+$charcoal: #2C2B30;
+$misty: #BDCDE6;
+$grey: #B2BABC;
+$porcelain: #FAF3EE;
+
 /* Font Imports */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
 :host {
   display: block;
+  background-color: $porcelain;
+  min-height: 100vh;
 }
 
 .font-playfair {
   font-family: 'Playfair Display', serif;
 }
 
-/* --- HERO SECTION (Matches Gallery/Blog) --- */
+/* --- HERO SECTION (From your snippet) --- */
 .hero-section {
   position: relative;
-  /* Reduced padding for sleek look */
-  padding: 8rem 0 6rem;
+  padding: 10rem 0 8rem; /* Adjusted slightly for fixed header clearance */
   background: linear-gradient(135deg, #2C2B30 0%, #1a1a1d 100%);
   overflow: hidden;
   clip-path: ellipse(150% 100% at 50% 0%);
@@ -74,59 +81,97 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- SIDEBAR STYLES --- */
+/* --- SIDEBAR STYLING (Adapted to match Hero) --- */
 aside {
-  position: sticky;
-  top: 8rem; 
-  height: fit-content;
-  z-index: 10;
-}
+  .sticky-wrapper {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid rgba($grey, 0.2);
+    overflow: hidden;
+  }
 
-.active-sub {
-  background-color: rgba(189, 205, 230, 0.2); 
-  color: #2C2B30; 
-  border-left-color: #2C2B30; 
-  font-weight: 700;
-}
+  .sidebar-header {
+    background: $charcoal;
+    padding: 1.5rem;
+    color: $misty;
+    
+    h2 { margin: 0; font-weight: 400; }
+  }
 
-.divide-y > div {
-  transition: all 0.3s ease-in-out;
-}
+  /* Category Buttons */
+  button.category-toggle {
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
 
-/* --- SERVICE CARD STYLES --- */
-.service-card {
-  position: relative;
-  overflow: hidden;
-  background-color: white;
-  transition: all 0.5s ease;
-  border: 1px solid rgba(178, 186, 188, 0.2);
-}
+    &:hover {
+      background-color: rgba($misty, 0.1);
+    }
 
-/* Deep Link / Force Hover Logic */
-.service-card.force-hover {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  border-color: #BDCDE6;
+    /* Active State */
+    &.active {
+      background-color: rgba($misty, 0.15);
+      border-left-color: $misty;
+      
+      .cat-name { color: $charcoal; font-weight: 700; }
+      .cat-icon { filter: none; opacity: 1; }
+    }
+  }
 
-  > div:first-child { opacity: 0; } /* Hide Front */
-  > div:nth-child(2) { opacity: 1; transform: translateY(0); } /* Show Back */
-}
-
-/* Standard Hover */
-.service-card:hover {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  border-color: #BDCDE6;
-}
-
-/* --- RESPONSIVE ADJUSTMENTS --- */
-@media (max-width: 1024px) {
-  aside {
-    width: 100%;
-    margin-bottom: 2rem;
+  /* Subcategory Buttons */
+  button.sub-btn {
     position: relative;
-    top: 0;
+    transition: all 0.3s;
+    
+    &:hover { color: $charcoal; }
+
+    &.active-sub {
+      color: $charcoal;
+      font-weight: 600;
+      background: linear-gradient(90deg, rgba($misty, 0.2) 0%, transparent 100%);
+      
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 0; bottom: 0;
+        width: 3px;
+        background-color: $misty;
+      }
+    }
   }
 }
 
-html {
-  scroll-padding-top: 150px;
+/* --- SERVICE CARDS (Updated Colors to Misty Blue) --- */
+.service-card {
+  transform: translateZ(0); 
+  background-color: $charcoal; /* Dark base so loading looks premium */
+  
+  .card-content {
+    background: linear-gradient(to top, rgba($charcoal, 0.95) 10%, rgba($charcoal, 0.6) 50%, transparent 100%);
+  }
+
+  .price-tag {
+    color: $misty; /* Changed from Gold to Misty Blue */
+  }
+
+  button.book-btn {
+    background-color: $misty;
+    color: $charcoal;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: $porcelain;
+      color: $charcoal;
+      box-shadow: 0 0 15px rgba($misty, 0.5);
+    }
+  }
+}
+
+/* --- UTILS --- */
+html { scroll-behavior: smooth; }
+
+.animate-fade-in-up { animation: fadeInUp 1s ease-out forwards; }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }

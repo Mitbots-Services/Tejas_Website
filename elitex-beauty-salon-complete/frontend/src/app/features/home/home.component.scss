@@ -1,94 +1,38 @@
-/* Home Component Luxury Styles */
+/* --- FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap');
 
-/* Import Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+.font-playfair { font-family: 'Playfair Display', serif; }
+.font-girly { font-family: 'Great Vibes', cursive; }
 
-:host {
-  display: block;
-  overflow-x: hidden;
+/* --- CAROUSEL UTILS --- */
+.carousel-container {
+  scrollbar-width: none; 
+  &::-webkit-scrollbar { display: none; }
+  user-select: none;
 }
 
-/* --- Typography --- */
-.font-girly { 
-  font-family: 'Great Vibes', cursive; 
-}
-
-.font-playfair { 
-  font-family: 'Playfair Display', serif; 
-}
-
-/* --- Animation Utilities --- */
-.reveal {
+/* --- ANIMATIONS --- */
+.fade-up {
   opacity: 0;
-  transform: translateY(40px);
-  transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
-  
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
   &.active {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* --- Navigation Buttons --- */
-.nav-btn {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  border: 1px solid #B2BABC;
-  background: transparent;
-  color: #2C2B30;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  transition: all 0.4s ease;
-  cursor: pointer;
-  
-  &:hover {
-    background: #2C2B30;
-    color: #FAF3EE;
-    border-color: #2C2B30;
-    box-shadow: 0 10px 20px rgba(44, 43, 48, 0.2);
-  }
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
 
-  &:active {
-    transform: scale(0.95);
-  }
+/* --- TEMPTING EFFECTS --- */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
-/* --- Carousel Container Styling --- */
-.carousel-container {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
-  &::-webkit-scrollbar {
-    display: none;           /* Chrome, Safari and Opera */
-  }
-}
-
-/* --- Responsive Adjustments --- */
-@media (max-width: 768px) {
-  .hero h1 { 
-    font-size: 5rem; 
-  }
-  
-  .nav-btn {
-    width: 48px;
-    height: 48px;
-    font-size: 1.2rem;
-  }
-}
-
-/* --- Interactive Elements --- */
-button:focus {
-  outline: none;
-}
-
-/* Ensure images in dark sections pop */
-.bg-\[\#2C2B30\] img {
-  filter: brightness(0.9);
-}
-
-.group:hover img {
-  filter: brightness(1);
+.animate-float {
+  animation: float 4s ease-in-out infinite;
 }

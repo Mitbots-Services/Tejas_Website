@@ -20,22 +20,11 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
           <div class="hidden md:flex items-center gap-8">
             <div class="flex gap-6 text-[11px] uppercase tracking-[0.2em] font-medium text-[#FAF3EE]">
               <a routerLink="/" routerLinkActive="text-[#BDCDE6] scale-110" [routerLinkActiveOptions]="{exact: true}" 
-                 class="hover:text-[#BDCDE6] hover:scale-110 transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#BDCDE6] hover:after:w-full after:transition-all">Home</a>
-              
-              <a routerLink="/services" routerLinkActive="text-[#BDCDE6] scale-110" 
-                 class="hover:text-[#BDCDE6] hover:scale-110 transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#BDCDE6] hover:after:w-full after:transition-all">Services</a>
-              
-              <a routerLink="/gallery" routerLinkActive="text-[#BDCDE6] scale-110" 
-                 class="hover:text-[#BDCDE6] hover:scale-110 transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#BDCDE6] hover:after:w-full after:transition-all">Gallery</a>
-              
-              <a routerLink="/team" routerLinkActive="text-[#BDCDE6] scale-110" 
-                 class="hover:text-[#BDCDE6] hover:scale-110 transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#BDCDE6] hover:after:w-full after:transition-all">Team</a>
-              
-              <a routerLink="/blog" routerLinkActive="text-[#BDCDE6] scale-110" 
-                 class="hover:text-[#BDCDE6] hover:scale-110 transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#BDCDE6] hover:after:w-full after:transition-all">Blog</a>
-
-              <a routerLink="/contact" routerLinkActive="text-[#BDCDE6] scale-110" 
-                 class="hover:text-[#BDCDE6] hover:scale-110 transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#BDCDE6] hover:after:w-full after:transition-all">Contact</a>
+                 class="nav-link">Home</a>
+              <a routerLink="/services" routerLinkActive="text-[#BDCDE6] scale-110" class="nav-link">Services</a>
+              <a routerLink="/gallery" routerLinkActive="text-[#BDCDE6] scale-110" class="nav-link">Gallery</a>
+              <a routerLink="/about" routerLinkActive="text-[#BDCDE6] scale-110" class="nav-link">About</a>
+              <a routerLink="/contact" routerLinkActive="text-[#BDCDE6] scale-110" class="nav-link">Contact</a>
             </div>
 
             <a routerLink="/booking" 
@@ -45,32 +34,45 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
             </a>
           </div>
 
-          <button (click)="toggleMobileMenu()" class="md:hidden text-[#BDCDE6] p-2 focus:outline-none">
+          <button (click)="toggleMobileMenu()" class="md:hidden text-[#BDCDE6] p-2 focus:outline-none z-[60]">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path *ngIf="!isMobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
-              <path *ngIf="isMobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+              <path [attr.d]="isMobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'" 
+                    stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
             </svg>
           </button>
         </div>
-
-        <div *ngIf="isMobileMenuOpen" 
-             class="md:hidden absolute top-full left-0 right-0 bg-[#2C2B30]/98 backdrop-blur-xl border-t border-[#B2BABC]/20 shadow-2xl transition-all duration-300">
-          <div class="flex flex-col p-8 space-y-6 text-center">
-            <a routerLink="/" (click)="toggleMobileMenu()" class="text-[#FAF3EE] hover:text-[#BDCDE6] uppercase tracking-[0.3em] text-xs">Home</a>
-            <a routerLink="/services" (click)="toggleMobileMenu()" class="text-[#FAF3EE] hover:text-[#BDCDE6] uppercase tracking-[0.3em] text-xs">Services</a>
-            <a routerLink="/gallery" (click)="toggleMobileMenu()" class="text-[#FAF3EE] hover:text-[#BDCDE6] uppercase tracking-[0.3em] text-xs">Gallery</a>
-            <a routerLink="/team" (click)="toggleMobileMenu()" class="text-[#FAF3EE] hover:text-[#BDCDE6] uppercase tracking-[0.3em] text-xs">Team</a>
-            <a routerLink="/blog" (click)="toggleMobileMenu()" class="text-[#FAF3EE] hover:text-[#BDCDE6] uppercase tracking-[0.3em] text-xs">Blog</a>
-            <a routerLink="/contact" (click)="toggleMobileMenu()" class="text-[#FAF3EE] hover:text-[#BDCDE6] uppercase tracking-[0.3em] text-xs">Contact</a>
-            <a routerLink="/booking" (click)="toggleMobileMenu()" class="inline-block mx-auto px-8 py-3 bg-[#BDCDE6] text-[#2C2B30] rounded-full uppercase text-[10px] tracking-[0.2em] font-bold">Book Now</a>
-          </div>
-        </div>
       </div>
     </nav>
+
+    <div *ngIf="isMobileMenuOpen" 
+         class="mobile-menu-container fixed inset-0 z-[55] flex flex-col p-8 lg:hidden animate-fade-in">
+      
+      <nav class="flex flex-col space-y-4 mt-24 text-center">
+        <a routerLink="/" (click)="toggleMobileMenu()" class="mobile-menu-link">Home</a>
+        <a routerLink="/services" (click)="toggleMobileMenu()" class="mobile-menu-link">Services</a>
+        <a routerLink="/gallery" (click)="toggleMobileMenu()" class="mobile-menu-link">Gallery</a>
+        <a routerLink="/booking" (click)="toggleMobileMenu()" class="mobile-menu-link">Book Now</a>
+        <a routerLink="/contact" (click)="toggleMobileMenu()" class="mobile-menu-link">Contact</a>
+      </nav>
+    </div>
   `,
   styles: [`
-    .font-girly { font-family: 'Great Vibes', cursive; }
-    
+    .nav-link {
+      position: relative;
+      transition: all 0.3s;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: #BDCDE6;
+        transition: width 0.3s;
+      }
+      &:hover::after { width: 100%; }
+    }
+
     .gold-pulse {
       animation: goldShine 3s infinite ease-in-out;
     }
@@ -78,6 +80,38 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     @keyframes goldShine {
       0%, 100% { filter: drop-shadow(0 0 0 rgba(0,0,0,0)); }
       50% { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6)) brightness(1.1); }
+    }
+
+    /* FIX: Moved outside the keyframes block */
+    .mobile-menu-container {
+      background-color: #2C2B30 !important;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      height: 100vh;
+      width: 100%;
+    }
+
+    .mobile-menu-link {
+      color: #FAF3EE;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(189, 205, 230, 0.1);
+      transition: all 0.3s;
+      
+      &:hover {
+        color: #BDCDE6;
+        letter-spacing: 2px;
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.4s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   `]
 })
@@ -92,5 +126,11 @@ export class NavigationComponent {
 
   toggleMobileMenu(): void { 
     this.isMobileMenuOpen = !this.isMobileMenuOpen; 
+    // Prevent background scrolling when menu is open
+    if(this.isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
   }
 }

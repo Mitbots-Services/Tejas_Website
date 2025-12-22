@@ -2,8 +2,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/* Import Fonts from uploaded files */
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+/* Import Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&display=swap');
@@ -15,11 +14,22 @@
   --porcelain: #FAF3EE;
 }
 
+/* --- FIX: Added html rule for smooth scrolling --- */
+html {
+  height: 100%;
+  scroll-behavior: smooth; /* Enables smooth jumping to sections */
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: var(--porcelain);
   color: var(--charcoal);
-  overflow-x: hidden;
+  
+  /* --- FIX: Ensure body takes full height but doesn't lock scroll --- */
+  min-height: 100%;
+  margin: 0;
+  overflow-x: hidden; /* Keep this to prevent horizontal sway */
+  /* Do NOT add overflow-y: hidden here, or scroll will break */
 }
 
 /* Typography Overrides */
@@ -49,6 +59,6 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 0; /* Behind everything */
+  z-index: 0;
   pointer-events: none;
 }

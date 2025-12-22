@@ -1,0 +1,71 @@
+<app-navigation></app-navigation>
+
+<main class="business-profile-page">
+
+  <section class="brand-hero">
+    <div class="overlay"></div>
+    <div class="hero-content text-center">
+      <span class="since-badge">Est. 2018</span>
+      <h1 class="brand-name">Tejas Beauty Salon</h1>
+      <p class="tagline">Where Luxury Meets Precision</p>
+    </div>
+  </section>
+
+  <section class="mission-section container">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="text-content">
+        <h4 class="section-subtitle">Our Philosophy</h4>
+        <h2 class="section-title">More Than Just a Salon</h2>
+        <div class="gold-divider"></div>
+        <p class="lead-text">
+          At Tejas, we believe that beauty is a feeling, not just a look. Located in the heart of Chennai, we have established ourselves as a premier destination for those seeking a moment of luxury.
+        </p>
+        <p class="body-text">
+          Our philosophy is simple: combine the latest international techniques with the warmth of Indian hospitality. We have curated a space where silence is golden, detail is paramount, and every client is treated like royalty.
+        </p>
+      </div>
+      <div class="image-content relative">
+        <img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=800&q=80" alt="Salon Interior" class="main-img shadow-2xl rounded-lg">
+        <div class="absolute -bottom-6 -left-6 bg-[#2C2B30] text-[#d4af37] p-6 rounded shadow-lg hidden md:block">
+          <p class="font-playfair text-xl italic">"Excellence in every detail."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-banner">
+    <div class="container grid grid-cols-3 gap-4 text-center">
+      <div class="stat-item" *ngFor="let stat of stats">
+        <h3 class="stat-number">{{ stat.number }}</h3>
+        <p class="stat-label">{{ stat.label }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pillars-section container">
+    <div class="text-center mb-12">
+      <h2 class="section-title">The Standard of Care</h2>
+      <p class="text-gray-500">What sets Tejas apart from the rest.</p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="pillar-card group" *ngFor="let pillar of pillars">
+        <div class="icon-wrapper">{{ pillar.icon }}</div>
+        <h3 class="pillar-title">{{ pillar.title }}</h3>
+        <p class="pillar-desc">{{ pillar.desc }}</p>
+        <div class="hover-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="interior-showcase">
+    <div class="showcase-content">
+      <h2>Step Into Serenity</h2>
+      <p>Experience the ambiance designed for your relaxation.</p>
+      <a href="/booking" class="cta-btn">Book Your Visit</a>
+    </div>
+  </section>
+
+</main>
+
+<app-footer></app-footer>

@@ -1,18 +1,21 @@
 <app-navigation></app-navigation>
 
-<main class="min-h-screen bg-[#FAF3EE]">
+<main class="min-h-screen bg-[#FAF3EE] relative overflow-hidden">
   
-  <section class="hero-section">
-    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-      <p class="text-[#BDCDE6] uppercase tracking-[0.4em] text-xs font-bold mb-4 animate-fade-in-up">The Collection</p>
-      <h1>Our Masterpieces</h1>
-      <p>Where artistry meets elegance. A visual journey through our finest transformations.</p>
-    </div>
+  <div class="absolute top-0 left-0 w-full h-[600px] bg-[#2C2B30] clip-path-slant z-0"></div>
+  <div class="absolute top-20 right-0 w-96 h-96 bg-[#BDCDE6] rounded-full blur-[120px] opacity-10 z-0"></div>
+
+  <section class="relative z-10 pt-40 pb-40 text-center px-6">
+    <p class="text-[#BDCDE6] uppercase tracking-[0.4em] text-xs font-bold mb-6 animate-fade-in-up">The Collection</p>
+    <h1 class="text-5xl md:text-7xl font-playfair text-[#FAF3EE] mb-6 drop-shadow-lg">Our Masterpieces</h1>
+    <p class="text-[#B2BABC] font-light max-w-lg mx-auto text-lg">
+      Where artistry meets elegance. A visual journey through our finest transformations.
+    </p>
   </section>
 
-  <div class="max-w-[1400px] mx-auto px-6 -mt-20 relative z-20 pb-20">
+  <div class="max-w-[1400px] mx-auto px-6 relative z-20 pb-32 -mt-20">
     
-    <div class="flex flex-wrap justify-center gap-4 mb-16">
+    <div class="bg-white p-6 rounded-xl shadow-lg border border-[#B2BABC]/20 mb-12 flex flex-wrap justify-center gap-4">
       <button *ngFor="let cat of categories" 
               (click)="setFilter(cat)"
               class="category-btn"
@@ -23,7 +26,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <div *ngFor="let item of filteredImages" 
-           class="group relative h-[400px] overflow-hidden rounded-sm cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500">
+           class="group relative h-[400px] overflow-hidden rounded-xl cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/50">
         
         <img [src]="item.url" 
              [alt]="item.title" 
@@ -42,7 +45,7 @@
       </div>
     </div>
 
-    <div *ngIf="filteredImages.length === 0" class="text-center py-20">
+    <div *ngIf="filteredImages.length === 0" class="text-center py-20 bg-white rounded-xl shadow-sm border border-[#B2BABC]/20">
       <p class="text-[#B2BABC] font-playfair text-2xl italic">No images found in this category.</p>
     </div>
 
