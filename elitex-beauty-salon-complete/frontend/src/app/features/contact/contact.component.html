@@ -1,0 +1,141 @@
+<app-navigation></app-navigation>
+
+<main class="min-h-screen bg-[#FAF3EE] relative overflow-hidden">
+  
+  <div class="absolute top-0 left-0 w-full h-[600px] bg-[#2C2B30] clip-path-slant z-0"></div>
+  <div class="absolute top-20 right-0 w-96 h-96 bg-[#BDCDE6] rounded-full blur-[120px] opacity-10 z-0"></div>
+
+  <section class="relative z-10 pt-40 pb-40 text-center px-6">
+    <p class="text-[#BDCDE6] uppercase tracking-[0.4em] text-xs font-bold mb-6 animate-fade-in-up">Connect</p>
+    <h1 class="text-5xl md:text-7xl font-playfair text-[#FAF3EE] mb-6 drop-shadow-lg">Get in Touch</h1>
+    <p class="text-[#B2BABC] font-light max-w-lg mx-auto text-lg">
+      Whether for a consultation or a booking, we are here to assist you.
+    </p>
+  </section>
+
+  <div class="max-w-[1200px] mx-auto px-6 relative z-20 pb-32 -mt-20">
+    
+    <div class="grid lg:grid-cols-5 shadow-2xl rounded-2xl overflow-hidden bg-white">
+      
+      <div class="lg:col-span-2 bg-[#2C2B30] p-10 md:p-14 text-[#FAF3EE] relative overflow-hidden group">
+        
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+        
+        <div class="relative z-10 h-full flex flex-col justify-between">
+          <div>
+            <h2 class="text-3xl font-playfair mb-10">Visit Tejas Salon</h2>
+            
+            <div class="space-y-10">
+              
+              <div class="flex gap-5">
+                <div class="w-10 h-10 rounded-full bg-[#BDCDE6]/10 flex items-center justify-center text-[#BDCDE6] shrink-0">📍</div>
+                <div>
+                  <h4 class="text-xs uppercase tracking-[0.2em] font-bold text-[#BDCDE6] mb-2">Location</h4>
+                  <p class="text-[#B2BABC] leading-relaxed font-light">
+                    No.33, Sabari Nagar, <br>
+                    Second Main Road, <br>
+                    Mugalivakkam, Chennai - 600125
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex gap-5">
+                <div class="w-10 h-10 rounded-full bg-[#BDCDE6]/10 flex items-center justify-center text-[#BDCDE6] shrink-0">📞</div>
+                <div>
+                  <h4 class="text-xs uppercase tracking-[0.2em] font-bold text-[#BDCDE6] mb-2">Concierge</h4>
+                  <div class="flex flex-col gap-1">
+                    <a href="tel:+916380682344" class="hover:text-[#BDCDE6] transition-colors">+91 63806 82344</a>
+                    <a href="tel:+918056108975" class="hover:text-[#BDCDE6] transition-colors">+91 80561 08975</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex gap-5">
+                <div class="w-10 h-10 rounded-full bg-[#BDCDE6]/10 flex items-center justify-center text-[#BDCDE6] shrink-0">✉️</div>
+                <div>
+                  <h4 class="text-xs uppercase tracking-[0.2em] font-bold text-[#BDCDE6] mb-2">Inquiries</h4>
+                  <a href="mailto:ramyarajendran30@gmail.com" class="hover:text-[#BDCDE6] transition-colors break-all">
+                    ramyarajendran30&#64;gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex gap-5">
+                <div class="w-10 h-10 rounded-full bg-[#BDCDE6]/10 flex items-center justify-center text-[#BDCDE6] shrink-0">📸</div>
+                <div>
+                  <h4 class="text-xs uppercase tracking-[0.2em] font-bold text-[#BDCDE6] mb-2">Follow Us</h4>
+                  <a href="https://instagram.com/ramyarajendran30" target="_blank" class="hover:text-[#BDCDE6] transition-colors">
+                    &#64;ramyarajendran30
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="mt-12 pt-8 border-t border-[#BDCDE6]/20">
+             <p class="text-[10px] uppercase tracking-[0.3em] text-[#B2BABC]">Experience Excellence</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-3 bg-white p-10 md:p-14 relative">
+        <h2 class="text-3xl font-playfair text-[#2C2B30] mb-2">Send a Message</h2>
+        <p class="text-[#B2BABC] text-sm mb-10">We usually respond within 24 hours.</p>
+
+        <form (ngSubmit)="onSubmit()" class="space-y-8">
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="relative group">
+              <input type="text" id="name" [(ngModel)]="formData.name" name="name" required placeholder=" "
+                     class="peer w-full bg-transparent border-b border-[#B2BABC]/30 py-3 text-[#2C2B30] placeholder-transparent focus:outline-none focus:border-[#2C2B30] transition-colors">
+              <label for="name" 
+                     class="absolute left-0 -top-3.5 text-xs text-[#B2BABC] transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-[#B2BABC]/70 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-[#2C2B30] peer-focus:text-xs">
+                Your Name
+              </label>
+            </div>
+
+            <div class="relative group">
+              <input type="tel" id="phone" [(ngModel)]="formData.phone" name="phone" required placeholder=" "
+                     class="peer w-full bg-transparent border-b border-[#B2BABC]/30 py-3 text-[#2C2B30] placeholder-transparent focus:outline-none focus:border-[#2C2B30] transition-colors">
+              <label for="phone" 
+                     class="absolute left-0 -top-3.5 text-xs text-[#B2BABC] transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-[#B2BABC]/70 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-[#2C2B30] peer-focus:text-xs">
+                Phone Number
+              </label>
+            </div>
+          </div>
+
+          <div class="relative group">
+            <input type="email" id="email" [(ngModel)]="formData.email" name="email" required placeholder=" "
+                   class="peer w-full bg-transparent border-b border-[#B2BABC]/30 py-3 text-[#2C2B30] placeholder-transparent focus:outline-none focus:border-[#2C2B30] transition-colors">
+            <label for="email" 
+                   class="absolute left-0 -top-3.5 text-xs text-[#B2BABC] transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-[#B2BABC]/70 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-[#2C2B30] peer-focus:text-xs">
+              Email Address
+            </label>
+          </div>
+
+          <div class="relative group">
+            <textarea id="message" rows="4" [(ngModel)]="formData.message" name="message" required placeholder=" "
+                      class="peer w-full bg-transparent border-b border-[#B2BABC]/30 py-3 text-[#2C2B30] placeholder-transparent focus:outline-none focus:border-[#2C2B30] transition-colors resize-none"></textarea>
+            <label for="message" 
+                   class="absolute left-0 top-0.5 text-xs text-[#B2BABC] transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-[#B2BABC]/70 peer-placeholder-shown:top-7 peer-focus:top-0.5 peer-focus:text-[#2C2B30] peer-focus:text-xs">
+              How can we help?
+            </label>
+          </div>
+
+          <div class="pt-4">
+            <button type="submit" 
+                    class="group relative px-10 py-4 bg-[#2C2B30] text-[#FAF3EE] uppercase tracking-[0.2em] text-xs font-bold overflow-hidden transition-all hover:shadow-xl">
+              <span class="relative z-10 group-hover:text-[#BDCDE6] transition-colors">Send Message</span>
+              <div class="absolute inset-0 bg-[#3a393f] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<app-footer></app-footer>

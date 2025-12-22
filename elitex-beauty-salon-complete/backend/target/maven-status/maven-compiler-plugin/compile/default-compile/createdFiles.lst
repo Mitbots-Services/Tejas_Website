@@ -36,7 +36,6 @@ com\elitex\saloon\EliteXSalonApplication.class
 com\elitex\saloon\repository\TestimonialRepository.class
 com\elitex\saloon\dto\LoginDto.class
 com\elitex\saloon\dto\LoginRequest.class
-com\elitex\saloon\service\PromotionService.class
 com\elitex\saloon\security\CustomUserDetailsService.class
 com\elitex\saloon\service\AppointmentService.class
 com\elitex\saloon\entity\Appointment.class

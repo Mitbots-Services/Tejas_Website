@@ -1,109 +1,139 @@
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+:host {
+  display: block;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+/* --- HERO SECTION (Reduced Size) --- */
 .hero-section {
   position: relative;
-  padding: 8rem 0 4rem;
-  background: linear-gradient(135deg, #2C2B30 0%, #BDCDE6 100%);
+  /* Reduced padding to make intro smaller */
+  padding: 8rem 0 5rem; 
+  background: linear-gradient(135deg, #2C2B30 0%, #1a1a1d 100%);
   overflow: hidden;
+  clip-path: ellipse(150% 100% at 50% 0%);
 
+  /* Animated Pattern Background */
   &:before {
     content: '';
     position: absolute;
     inset: 0;
     background-image:
-      radial-gradient(circle at 20% 50%, rgba(189, 205, 230, 0.2) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(178, 186, 188, 0.2) 0%, transparent 50%);
-    animation: patternMove 20s linear infinite;
+      radial-gradient(circle at 20% 50%, rgba(189, 205, 230, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(178, 186, 188, 0.1) 0%, transparent 50%);
+    animation: patternMove 20s linear infinite alternate;
   }
 
+  /* Grid overlay for texture */
   &:after {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px);
+    background-image: repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(255, 255, 255, 0.02) 1px, rgba(255, 255, 255, 0.02) 2px);
+    background-size: 40px 40px;
   }
 
   h1 {
     position: relative;
     z-index: 10;
-    font-size: clamp(3rem, 6vw, 5rem);
+    font-family: 'Playfair Display', serif;
+    /* Slightly smaller font size for the reduced section */
+    font-size: clamp(2.5rem, 5vw, 4.5rem); 
     font-weight: 700;
-    color: white;
+    color: #FAF3EE;
     text-align: center;
     margin-bottom: 1rem;
     animation: reveal 1s ease-out;
+    letter-spacing: -0.02em;
   }
 
   p {
     position: relative;
     z-index: 10;
-    font-size: clamp(1.25rem, 2vw, 1.75rem);
-    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: #B2BABC;
     text-align: center;
     max-width: 600px;
     margin: 0 auto;
+    font-weight: 300;
     animation: reveal 1s ease-out 0.2s backwards;
   }
 }
 
 @keyframes patternMove {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  100% { transform: translate(50px, 50px) rotate(360deg); }
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
 }
 
 @keyframes reveal {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
+/* --- FILTER BUTTONS (Blue Theme) --- */
 .category-btn {
-  padding: 0.75rem 1.5rem;
-  background: white;
-  border: 2px solid #BDCDE6;
+  padding: 0.75rem 2rem;
+  /* Semi-transparent dark bg to pop against Hero, but keep text readable */
+  background: rgba(44, 43, 48, 0.8); 
+  backdrop-filter: blur(10px);
+  /* Blue Border */
+  border: 1px solid #BDCDE6;
   border-radius: 50px;
-  font-weight: 600;
-  color: #2C2B30;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  /* Blue Text */
+  color: #BDCDE6; 
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 20;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 
   &:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 8px 24px rgba(189, 205, 230, 0.4);
+    transform: translateY(-2px);
+    /* Fill with Blue on hover */
+    background: #BDCDE6;
+    border-color: #BDCDE6;
+    /* Text turns Dark for contrast */
+    color: #2C2B30;
+    box-shadow: 0 0 20px rgba(189, 205, 230, 0.4);
   }
 
+  /* Active State (Selected) */
   &.active {
-    background: linear-gradient(135deg, #BDCDE6, #B2BABC);
-    border-color: transparent;
-    color: white;
-    transform: scale(1.1);
-    box-shadow: 0 8px 24px rgba(189, 205, 230, 0.5);
+    /* Solid Blue Background */
+    background: #BDCDE6;
+    border-color: #BDCDE6;
+    /* Dark Text */
+    color: #2C2B30;
+    box-shadow: 0 0 25px rgba(189, 205, 230, 0.5);
   }
 }
 
+/* --- BLOG CARD --- */
 .blog-card {
-  transition: all 0.3s;
+  transition: all 0.5s ease;
+  border: 1px solid rgba(178, 186, 188, 0.2);
 
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    border-color: #BDCDE6; /* Highlight border on hover */
   }
 }
 
-.line-clamp-2,
+/* Line clamping utilities */
 .line-clamp-3 {
   display: -webkit-box;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-.line-clamp-2 {
-  -webkit-line-clamp: 2;
-}
-
-.line-clamp-3 {
-  -webkit-line-clamp: 3;
 }

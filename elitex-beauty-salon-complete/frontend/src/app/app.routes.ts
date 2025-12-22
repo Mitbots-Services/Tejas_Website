@@ -1,52 +1,35 @@
 import { Routes } from '@angular/router';
+// Import components directly to avoid 'loadComponent' promise issues
+import { HomeComponent } from './features/home/home.component';
+import { ServiceCategoriesComponent } from './features/service-categories/service-categories.component';
+import { BookingComponent } from './features/booking/booking.component';
+import { GalleryComponent } from './features/gallery/gallery.component';
+import { TeamComponent } from './features/team/team.component';
+import { ContactComponent } from './features/contact/contact.component';
+import { BlogComponent } from './features/blog/blog.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent)
+  { path: '', component: HomeComponent },
+  { path: 'services', component: ServiceCategoriesComponent },
+  { path: 'booking', component: BookingComponent },
+  { path: 'gallery', component: GalleryComponent },
+  { path: 'team', component: TeamComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'blog', component: BlogComponent },
+  
+  // Lazy load modules (admin/auth/dashboard) if they have their own routing files
+  { 
+    path: 'auth', 
+    loadChildren: () => import('./features/auth/auth.routes').then(m => m.AUTH_ROUTES) 
   },
-{
-    path: 'services',
-    loadComponent: () =>
-      import('./features/service-categories/service-categories.component')
-        .then(m => m.ServiceCategoriesComponent)
+  { 
+    path: 'dashboard', 
+    loadChildren: () => import('./features/user-dashboard/user-dashboard.routes').then(m => m.USER_DASHBOARD_ROUTES) 
   },
-
-
-  {
-    path: 'booking',
-    loadComponent: () => import('./features/booking/booking.component').then(m => m.BookingComponent)
+  { 
+    path: 'admin', 
+    loadChildren: () => import('./features/admin/admin.routes').then(m => m.ADMIN_ROUTES) 
   },
-  {
-    path: 'gallery',
-    loadComponent: () => import('./features/gallery/gallery.component').then(m => m.GalleryComponent)
-  },
-  {
-    path: 'team',
-    loadComponent: () => import('./features/team/team.component').then(m => m.TeamComponent)
-  },
-  {
-    path: 'contact',
-    loadComponent: () => import('./features/contact/contact.component').then(m => m.ContactComponent)
-  },
-  {
-    path: 'blog',
-    loadComponent: () => import('./features/blog/blog.component').then(m => m.BlogComponent)
-  },
-  {
-    path: 'auth',
-    loadChildren: () => import('./features/auth/auth.routes').then(m => m.AUTH_ROUTES)
-  },
-  {
-    path: 'dashboard',
-    loadChildren: () => import('./features/user-dashboard/user-dashboard.routes').then(m => m.USER_DASHBOARD_ROUTES)
-  },
-  {
-    path: 'admin',
-    loadChildren: () => import('./features/admin/admin.routes').then(m => m.ADMIN_ROUTES)
-  },
-  {
-    path: '**',
-    redirectTo: ''
-  }
+  
+  { path: '**', redirectTo: '' }
 ];

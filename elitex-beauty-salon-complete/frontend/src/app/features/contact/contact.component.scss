@@ -1,0 +1,45 @@
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+:host {
+  display: block;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+/* --- Slanted Background Clip --- */
+.clip-path-slant {
+  /* Creates the diagonal cut background */
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+/* --- Hero Section Animation --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+/* --- Input Autofill Styling --- */
+/* This ensures the browser autocomplete doesn't ruin the dark/light theme inputs */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #2C2B30;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
